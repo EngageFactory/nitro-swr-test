@@ -1,7 +1,17 @@
 export default defineEventHandler(async () => {
-  const data = await $fetch('/api/test', {
-    method: 'POST',
-  });
-  console.log(data);
-  return data;
+  return `
+  <body>
+    <script>
+        async function GetData() {
+          const data = await fetch('/api/test', {
+            method: 'POST',
+          })
+          const response = await data.json()
+          console.log(response)
+        }
+    </script>
+        <button id='getData' onclick="GetData()">Get Data</button>
+</body>
+  `;
 });
+
